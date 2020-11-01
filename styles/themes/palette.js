@@ -4,9 +4,9 @@
 
 const palette = colors => ({
   primary: {
-    lightest: colors.green_3,
-    light: colors.green_2,
-    main: colors.green_p,
+    lightest: colors.pink_p,
+    light: colors.blue_2,
+    main: colors.pink_p,
     dark: colors.green_p_hover,
     contrastText: colors.grey_1,
     black: colors.black,

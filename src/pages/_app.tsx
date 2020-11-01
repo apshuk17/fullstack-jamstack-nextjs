@@ -10,6 +10,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import getTheme from "../../styles/themes";
 import GlobalStyle from "../../styles/globalStyles";
 import NavBar from "../components/NavBar/NavBar.component";
+import { TodosProvider } from "../contexts/Todocontext";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -40,7 +41,9 @@ export default function MyApp(props) {
             <CssBaseline />
             <GlobalStyle />
             <NavBar />
-            <Component {...pageProps} />
+            <TodosProvider>
+              <Component {...pageProps} />
+            </TodosProvider>
           </ThemeProvider>
         </MuiThemeProvider>
       </StylesProvider>

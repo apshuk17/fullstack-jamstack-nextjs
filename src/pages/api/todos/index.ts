@@ -1,16 +1,16 @@
-const Airtable = require("airtable");
 import { NextApiRequest, NextApiResponse } from "next";
-
-const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
-  process.env.AIRTABLE_BASE_ID
-);
-
-const todoTable = base(process.env.AIRTABLE_TABLE_NAME);
+import { todoTable, getMinifyRecords } from "../../../../utils/Airtable";
 
 const getTodos = async (req: NextApiRequest, res: NextApiResponse) => {
-  const todos = await todoTable.select({}).firstPage();
-  res.statusCode = 200;
-  return res.json({ todos });
+  try {
+    const todos = await todoTable.select({}).firstPage();
+    const minifiedTodos = getMinifyRecords(todos);
+    res.statusCode = 200;
+    return res.json({ todos: minifiedTodos });
+  } catch (error) {
+    res.statusCode = 500;
+    res.json({ errorMsg: "Something went wrong", error });
+  }
 };
 
 export default getTodos;

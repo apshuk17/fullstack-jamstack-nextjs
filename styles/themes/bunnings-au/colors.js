@@ -51,6 +51,9 @@ export default {
   grey_4: '#333333',
   grey_5: '#222222',
 
+  // Pink
+  pink_p: '#DC004E',
+
   // White
   white: '#FFFFFF',
 
